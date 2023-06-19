@@ -1,5 +1,5 @@
 import'package:flutter/material.dart';
-import 'package:todo_app/models/tache.dart';
+
 import 'package:todo_app/repository/tache_repository.dart';
 import 'package:todo_app/views/add_tache.dart';
 
@@ -12,7 +12,7 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   @override
-  GlobalKey<FormState> KeyForm = GlobalKey();
+
 
 
   @override
@@ -26,18 +26,25 @@ class _homeState extends State<home> {
       body: Column(
         children: [
           Expanded(child: ListView(
-            children: tache_repository().List_tache
+            children: tache_repository.List_tache
                 .where((tache)=> tache.titre != null)
                 .map((tache)=> Card(
-              child: ListTile(
+              child: Column(
+                children : [
+                   ListTile(
                 title: Text(tache.titre.toString()),
                 subtitle: Text(tache.description.toString()),
-                leading: const CircleAvatar(
-                    child :
-                    Image(image: AssetImage(""),
-                    )
-                ),
               ),
+                  const Divider(),
+                  ElevatedButton(
+                      onPressed: ()
+                      {setState(() {
+                          tache_repository.supprimer_tache(tache);
+                        });
+                      }
+                      , child: Text("supprimer"))
+            ]
+            )
             )).toList(),
           ))
         ],

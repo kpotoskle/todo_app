@@ -89,7 +89,7 @@ class _add_tacheState extends State<add_tache> {
                 titre: titre,
                 description: description
               );
-              tache_repository().List_tache.add(tch);
+              tache_repository.List_tache.add(tch);
               setState(() {
                 description_controller.clear();
                 titre_controller.clear();
