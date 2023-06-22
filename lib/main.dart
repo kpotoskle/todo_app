@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/repository/tache_repository.dart';
 import 'package:todo_app/views/homePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider<tache_repository>(
+      create: (context) => tache_repository(),
+  child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

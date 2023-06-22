@@ -1,12 +1,20 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:todo_app/models/tache.dart';
+final List<tache> _List_tache=[];
+class tache_repository with ChangeNotifier{
 
-class tache_repository{
-  static List<tache> List_tache=[];
-  static void ajouter_tache(tache th){
-    List_tache.add(th);
+   List<tache> get List_tache => _List_tache;
+
+   void ajouter(tache th){
+    _List_tache.add(th);
+    notifyListeners();
+
   }
-  static void supprimer_tache(tache th){
-    List_tache.remove(th);
+   void supprimer(tache th){
+    _List_tache.remove(th);
+    notifyListeners();
   }
 }
+
+
